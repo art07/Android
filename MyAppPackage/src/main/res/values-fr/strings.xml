@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mon package d\'application</string>
+    <string name="alert_info">Plus d\'informations sur le projet, vous pouvez le trouver sur GitHub:</string>
+    <string name="alert_title">À propos du projet</string>
+    <string name="division_by_zero">La division par zéro n\'est pas possible</string>
+    <string name="menu_main_about">À propos du projet</string>
+    <string name="menu_main_settings">Paramètres</string>
+    <string name="text_view_clear">CLAIR</string>
+    <string name="calculator">Calculatrice</string>
+    <string name="currency_converter">Convertisseur de devises</string>
+    <string name="different">Divers</string>
+    <string name="home">Accueil</string>
+    <string name="rate_rub_text">Taux USD (1) - RUB:</string>
+    <string name="rate_uah_text">Taux USD (1) - UAH:</string>
+</resources>

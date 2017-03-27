@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="apps_list">
+        <item>@string/home</item>
+        <item>@string/calculator</item>
+        <item>@string/currency_converter</item>
+        <item>@string/different</item>
+    </string-array>
+
+    <string-array name="spinner">
+        <item>USD/UAH</item>
+        <item>UAH/USD</item>
+        <item>USD/RUB</item>
+        <item>RUB/USD</item>
+    </string-array>
+</resources>
