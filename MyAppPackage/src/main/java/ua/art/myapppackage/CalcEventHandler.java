@@ -1,4 +1,5 @@
 package ua.art.myapppackage;
+import android.os.Build;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.widget.TextView;
@@ -122,10 +123,12 @@ class CalcEventHandler implements View.OnClickListener {
     }
 
     private void buttonAnimation(TextView bTextView) {
-        int centerX = bTextView.getWidth() / 2;
-        int centerY = bTextView.getHeight() / 2;
-        float startRadius = bTextView.getWidth();
-        float endRadius = 15;
-        ViewAnimationUtils.createCircularReveal(bTextView, centerX, centerY, startRadius, endRadius).start();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            int centerX = bTextView.getWidth() / 2;
+            int centerY = bTextView.getHeight() / 2;
+            float startRadius = bTextView.getWidth();
+            float endRadius = 15;
+            ViewAnimationUtils.createCircularReveal(bTextView, centerX, centerY, startRadius, endRadius).start();
+        }
     }
 }
