@@ -1,5 +1,6 @@
 package ua.art.myapppackage;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.widget.TextView;
 
 class CalcEventHandler implements View.OnClickListener {
@@ -95,6 +96,7 @@ class CalcEventHandler implements View.OnClickListener {
         } else {
             parent.getFieldList().get(1).setText(textInput += bTextView.getText());
         }
+        buttonAnimation(bTextView);
     }
 
     private void saveFirstNumber() {
@@ -117,5 +119,13 @@ class CalcEventHandler implements View.OnClickListener {
         point = false;
         parent.getFieldList().get(0).setText("");
         parent.getFieldList().get(1).setText(textInput);
+    }
+
+    private void buttonAnimation(TextView bTextView) {
+        int centerX = bTextView.getWidth() / 2;
+        int centerY = bTextView.getHeight() / 2;
+        float startRadius = bTextView.getWidth();
+        float endRadius = 15;
+        ViewAnimationUtils.createCircularReveal(bTextView, centerX, centerY, startRadius, endRadius).start();
     }
 }
