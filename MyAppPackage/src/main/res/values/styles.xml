@@ -9,7 +9,7 @@
         <item name="android:layout_width">@dimen/zero_dp</item>
         <item name="android:layout_height">@dimen/zero_dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">36sp</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
         <item name="android:layout_rowWeight">2</item>
         <item name="android:layout_columnWeight">1</item>
         <item name="android:layout_margin">1dp</item>
@@ -21,7 +21,7 @@
         <item name="android:layout_width">@dimen/zero_dp</item>
         <item name="android:layout_height">@dimen/zero_dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">36sp</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
         <item name="android:layout_rowWeight">2</item>
         <item name="android:layout_columnWeight">1</item>
         <item name="android:layout_margin">1dp</item>
@@ -45,23 +45,12 @@
         <item name="android:layout_width">@dimen/zero_dp</item>
         <item name="android:layout_height">@dimen/zero_dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">36sp</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
         <item name="android:layout_rowWeight">2</item>
         <item name="android:layout_columnWeight">1</item>
         <item name="android:layout_margin">1dp</item>
         <item name="android:background">@android:color/holo_green_dark</item>
         <item name="android:textColor">@android:color/white</item>
-    </style>
-
-    <style name="MyColorlessButtonsLandscape">
-        <item name="android:layout_width">@dimen/zero_dp</item>
-        <item name="android:layout_height">@dimen/zero_dp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textSize">36sp</item>
-        <item name="android:layout_rowWeight">2</item>
-        <item name="android:layout_columnWeight">1</item>
-        <item name="android:layout_margin">1dp</item>
-        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="MyFieldsLandscape">

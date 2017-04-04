@@ -10,5 +10,6 @@
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/art"
             android:id="@+id/imageView"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            tools:ignore="contentDescription"/>
 </FrameLayout>

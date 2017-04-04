@@ -10,12 +10,12 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 class ConvEventHandler implements View.OnClickListener, AdapterView.OnItemSelectedListener, CompoundButton.OnCheckedChangeListener, TextWatcher {
-    private FragConverter parent;
+    private final FragConverter parent;
     private double uahRate, rubRate;
     private static int currentPosition;
-    private NumberFormat valueFormatUAH = NumberFormat.getCurrencyInstance(new Locale("uk", "UA"));
-    private NumberFormat valueFormatUSD = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
-    private NumberFormat valueFormatRUB = NumberFormat.getCurrencyInstance(new Locale("ru", "RU"));
+    private final NumberFormat valueFormatUAH = NumberFormat.getCurrencyInstance(new Locale("uk", "UA"));
+    private final NumberFormat valueFormatUSD = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
+    private final NumberFormat valueFormatRUB = NumberFormat.getCurrencyInstance(new Locale("ru", "RU"));
 
     ConvEventHandler(FragConverter parent) {
         this.parent = parent;

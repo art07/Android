@@ -5,7 +5,7 @@ import android.view.ViewAnimationUtils;
 import android.widget.TextView;
 
 class CalcEventHandler implements View.OnClickListener {
-    private FragCalculator parent;
+    private final FragCalculator parent;
     private String textInput = "";
     private double firstNumbers = 0.0;
     private double secondNumbers = 0.0;

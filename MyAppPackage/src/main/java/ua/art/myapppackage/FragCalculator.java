@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FragCalculator extends Fragment {
-    private List<TextView> buttonList = new ArrayList<>();
-    private List<TextView> fieldList = new ArrayList<>();
+    private final List<TextView> buttonList = new ArrayList<>();
+    private final List<TextView> fieldList = new ArrayList<>();
 
     public FragCalculator() {
     }

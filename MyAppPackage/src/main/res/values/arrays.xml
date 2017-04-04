@@ -7,10 +7,10 @@
         <item>@string/different</item>
     </string-array>
 
-    <string-array name="spinner">
-        <item>USD/UAH</item>
-        <item>UAH/USD</item>
-        <item>USD/RUB</item>
-        <item>RUB/USD</item>
+    <string-array name="mySpinner">
+        <item>@string/usd_uah</item>
+        <item>@string/uah_usd</item>
+        <item>@string/usd_rub</item>
+        <item>@string/rub_usd</item>
     </string-array>
 </resources>
