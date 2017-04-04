@@ -1,4 +1,5 @@
 package ua.art.myapppackage;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -45,6 +46,7 @@ public class ActMain extends AppCompatActivity {
                 super.onDrawerOpened(drawerView);
                 invalidateOptionsMenu(); //Declare that the options menu has changed, so should be recreated.
             }
+
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -75,7 +77,9 @@ public class ActMain extends AppCompatActivity {
             }
         });
         if (savedInstanceState == null) {
-            this.selectedItem(0);
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.frame_container, new FragHome())
+                    .commit();
         } else {
             currentPosition = savedInstanceState.getInt("currentPosition");
             setActionBarTitle(currentPosition);
@@ -140,7 +144,7 @@ public class ActMain extends AppCompatActivity {
                     });
             AlertDialog alert = alertDialogBuilder.create();
             alert.show();
-        } else if(drawerToggle.onOptionsItemSelected(item)) { //This hook is called whenever an drawerToggle item in your options menu is selected.
+        } else if (drawerToggle.onOptionsItemSelected(item)) { //This hook is called whenever an drawerToggle item in your options menu is selected.
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -154,11 +158,11 @@ public class ActMain extends AppCompatActivity {
         else if (position == 2) fragment = new FragConverter();
         else fragment = new FragDifferent();
 
-        FragmentTransaction fragTransaction = this.getSupportFragmentManager().beginTransaction();
-        fragTransaction.replace(R.id.frame_content, fragment, "current_fragment");
-        fragTransaction.addToBackStack(null);
-        fragTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        fragTransaction.commit();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frame_container, fragment, "current_fragment")
+                .addToBackStack(null)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
 
         currentPosition = position;
         drawerLayout.closeDrawer(drawerListView);
