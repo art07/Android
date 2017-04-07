@@ -28,7 +28,7 @@ public class ActMain extends AppCompatActivity {
     private ActionBarDrawerToggle drawerToggle;
     private DrawerLayout drawerLayout;
     private ListView drawerListView;
-    private String[] appsList;
+    private String[] appNameList;
     private int currentPosition;
 
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -39,7 +39,7 @@ public class ActMain extends AppCompatActivity {
         actionBar = this.getSupportActionBar();
         drawerLayout = (DrawerLayout) this.findViewById(R.id.act_main_root_drawer);
         drawerListView = (ListView) findViewById(R.id.drawer_list_view);
-        appsList = this.getResources().getStringArray(R.array.apps_list);
+        appNameList = this.getResources().getStringArray(R.array.apps_list);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open_drawer, R.string.close_drawer) {
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -57,14 +57,14 @@ public class ActMain extends AppCompatActivity {
         drawerLayout.addDrawerListener(drawerToggle); //Drawer events. onDrawerOpened/onDrawerClosed.
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        drawerListView.setAdapter(new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, appsList));
+        drawerListView.setAdapter(new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, appNameList));
         drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedItem(position);
             }
         });
-        this.getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
                 Fragment fragment = getSupportFragmentManager().findFragmentByTag("current_fragment");
@@ -170,7 +170,7 @@ public class ActMain extends AppCompatActivity {
 
     /*SET ACTION BAR TITLE*/
     private void setActionBarTitle(int currentPosition) {
-        if (currentPosition != 0) actionBar.setTitle(appsList[currentPosition]);
+        if (currentPosition != 0) actionBar.setTitle(appNameList[currentPosition]);
         else actionBar.setTitle(getResources().getString(R.string.app_name));
     }
 }
