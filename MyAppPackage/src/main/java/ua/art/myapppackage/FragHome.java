@@ -35,8 +35,7 @@ public class FragHome extends Fragment {
     }
 
     private class MyAdapter extends RecyclerView.Adapter<MyHolder> {
-        private List<MyApp> appArrayList;
-        private MyApp myApp;
+        private final List<MyApp> appArrayList;
 
         MyAdapter(List<MyApp> appArrayList) {
             this.appArrayList = appArrayList;
@@ -54,8 +53,9 @@ public class FragHome extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(MyHolder myHolder, final int position) {
-            myApp = appArrayList.get(position);
+        public void onBindViewHolder(MyHolder myHolder, int position) {
+            final int elementPosition = position;
+            MyApp myApp = appArrayList.get(elementPosition);
             ((ImageView) myHolder.itemView.findViewById(R.id.app_image)).setImageResource(myApp.getImageId());
             ((TextView) myHolder.itemView.findViewById(R.id.app_title)).setText(myApp.getAppName());
 
@@ -63,7 +63,7 @@ public class FragHome extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Fragment fragment;
-                    if (position == 0) fragment = new FragCalculator();
+                    if (elementPosition == 0) fragment = new FragCalculator();
                     else fragment = new FragConverter();
 
                     getActivity().getSupportFragmentManager().beginTransaction()

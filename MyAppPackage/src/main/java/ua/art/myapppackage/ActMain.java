@@ -2,7 +2,6 @@ package ua.art.myapppackage;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -25,6 +24,7 @@ import android.widget.TextView;
 
 public class ActMain extends AppCompatActivity {
     private ActionBar actionBar;
+    private FragmentManager fragmentManager;
     private ActionBarDrawerToggle drawerToggle;
     private DrawerLayout drawerLayout;
     private ListView drawerListView;
@@ -37,9 +37,33 @@ public class ActMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_main);
         actionBar = this.getSupportActionBar();
-        drawerLayout = (DrawerLayout) this.findViewById(R.id.act_main_root_drawer);
-        drawerListView = (ListView) findViewById(R.id.drawer_list_view);
+        if (actionBar != null) {
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         appNameList = this.getResources().getStringArray(R.array.apps_list);
+        drawerListView = (ListView) findViewById(R.id.drawer_list_view);
+        drawerListView.setAdapter(new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, appNameList));
+        drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectedItem(position);
+            }
+        });
+        fragmentManager = getSupportFragmentManager();
+        fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                Fragment fragment = fragmentManager.findFragmentByTag("current_fragment");
+                if (fragment instanceof FragHome) currentPosition = 0;
+                else if (fragment instanceof FragCalculator) currentPosition = 1;
+                else if (fragment instanceof FragConverter) currentPosition = 2;
+                else if (fragment instanceof FragDifferent) currentPosition = 3;
+                setActionBarTitle(currentPosition);
+                drawerListView.setItemChecked(currentPosition, true);
+            }
+        });
+        drawerLayout = (DrawerLayout) this.findViewById(R.id.act_main_root_drawer);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open_drawer, R.string.close_drawer) {
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -53,31 +77,10 @@ public class ActMain extends AppCompatActivity {
                 invalidateOptionsMenu();
             }
         };
-        /*.....................*/
         drawerLayout.addDrawerListener(drawerToggle); //Drawer events. onDrawerOpened/onDrawerClosed.
-        actionBar.setHomeButtonEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        drawerListView.setAdapter(new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, appNameList));
-        drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectedItem(position);
-            }
-        });
-        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-            @Override
-            public void onBackStackChanged() {
-                Fragment fragment = getSupportFragmentManager().findFragmentByTag("current_fragment");
-                if (fragment instanceof FragHome) currentPosition = 0;
-                else if (fragment instanceof FragCalculator) currentPosition = 1;
-                else if (fragment instanceof FragConverter) currentPosition = 2;
-                else if (fragment instanceof FragDifferent) currentPosition = 3;
-                setActionBarTitle(currentPosition);
-                drawerListView.setItemChecked(currentPosition, true);
-            }
-        });
+
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
+            fragmentManager.beginTransaction()
                     .add(R.id.frame_container, new FragHome())
                     .commit();
         } else {
@@ -92,34 +95,7 @@ public class ActMain extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) { //Dynamically modify the contents of the menu.
-        boolean b = drawerLayout.isDrawerOpen(drawerListView);
-        (menu.findItem(R.id.menu_main_item)).setVisible(!b);
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        drawerToggle.syncState(); //Sync the toggle state after onRestoreInstanceState has occurred.
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        drawerToggle.onConfigurationChanged(newConfig); //Pass any configuration change to the drawer toggles.
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("currentPosition", currentPosition);
-    }
-    /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-
-    /*ACTION BAR CLICK LISTENER*/
-    @Override
+    @Override/*ACTION BAR CLICK LISTENER*/
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_main_settings) {
             this.startActivity(new Intent(ActMain.this, ActSettings.class));
@@ -150,6 +126,27 @@ public class ActMain extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) { //Dynamically modify the contents of the menu.
+        boolean b = drawerLayout.isDrawerOpen(drawerListView);
+        (menu.findItem(R.id.menu_main_item)).setVisible(!b);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        drawerToggle.syncState(); //Sync the toggle state after onRestoreInstanceState has occurred.
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("currentPosition", currentPosition);
+    }
+    /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
     /*DRAWER LIST VIEW CLICK LISTENER*/
     private void selectedItem(int position) {
         Fragment fragment;
@@ -158,14 +155,14 @@ public class ActMain extends AppCompatActivity {
         else if (position == 2) fragment = new FragConverter();
         else fragment = new FragDifferent();
 
-        getSupportFragmentManager().beginTransaction()
+        fragmentManager.beginTransaction()
                 .replace(R.id.frame_container, fragment, "current_fragment")
                 .addToBackStack(null)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
 
-        currentPosition = position;
         drawerLayout.closeDrawer(drawerListView);
+        currentPosition = position;
     }
 
     /*SET ACTION BAR TITLE*/
