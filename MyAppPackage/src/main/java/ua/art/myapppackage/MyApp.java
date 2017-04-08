@@ -1,7 +1,5 @@
 package ua.art.myapppackage;
 
-import java.util.List;
-
 class MyApp {
     private int appName;
     private int imageId;
