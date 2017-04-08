@@ -24,7 +24,7 @@ public class FragHome extends Fragment {
         RecyclerView fragmentHomeRecyclerView = (RecyclerView) view.findViewById(R.id.fragment_home_recycler_view);
         fragmentHomeRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         DataStorage dataStorage = DataStorage.getDataStorage();
-        fragmentHomeRecyclerView.setAdapter(new MyAdapter(dataStorage.getAppArrayList()));
+        fragmentHomeRecyclerView.setAdapter(new MyAdapter(dataStorage.getAppList()));
         return view;
     }
 

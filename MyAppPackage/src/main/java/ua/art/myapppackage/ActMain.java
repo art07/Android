@@ -22,13 +22,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class ActMain extends AppCompatActivity {
+    private DataStorage DATA_STORAGE;
     private ActionBar actionBar;
     private FragmentManager fragmentManager;
     private ActionBarDrawerToggle drawerToggle;
     private DrawerLayout drawerLayout;
     private ListView drawerListView;
-    private String[] appNameList;
     private int currentPosition;
 
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -36,14 +39,15 @@ public class ActMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_main);
+        DATA_STORAGE = DataStorage.getDataStorage();
+        DATA_STORAGE.setAppNameList(new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.apps_list))));
         actionBar = this.getSupportActionBar();
         if (actionBar != null) {
             actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        appNameList = this.getResources().getStringArray(R.array.apps_list);
         drawerListView = (ListView) findViewById(R.id.drawer_list_view);
-        drawerListView.setAdapter(new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, appNameList));
+        drawerListView.setAdapter(new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, DATA_STORAGE.getAppNameList()));
         drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -167,7 +171,7 @@ public class ActMain extends AppCompatActivity {
 
     /*SET ACTION BAR TITLE*/
     private void setActionBarTitle(int currentPosition) {
-        if (currentPosition != 0) actionBar.setTitle(appNameList[currentPosition]);
+        if (currentPosition != 0) actionBar.setTitle(DATA_STORAGE.getAppNameList().get(currentPosition));
         else actionBar.setTitle(getResources().getString(R.string.app_name));
     }
 }
