@@ -34,7 +34,7 @@ public class FragConverter extends Fragment {
         super.onStart();
         ConvEventHandler convEventHandler = new ConvEventHandler(this);
 
-        editTextRate1 = (MaskedEditText) getView().findViewById(R.id.editTextRate1);
+        editTextRate1 = (MaskedEditText) getView().findViewById(R.id.edit_text_rate1);
         editTextRate2 = (MaskedEditText) getView().findViewById(R.id.editTextRate2);
         mainEditText = (EditText) getView().findViewById(R.id.main_edit_text);
         mainEditText.addTextChangedListener(convEventHandler);
