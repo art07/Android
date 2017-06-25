@@ -1,24 +1,29 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="ua.art.myapppackage.FragCalculator">
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="HardcodedText,UselessParent,RtlHardcoded, RtlSymmetry"
+        tools:context="ua.art.myapppackage.FragCalculator">
+
+    <TextView android:id="@+id/textField"
+              android:layout_weight="1"
+              android:layout_rowWeight="1"
+              android:textSize="18sp"
+              style="@style/MyFieldsLandscape"/>
+
+    <TextView android:id="@+id/textField2"
+              android:layout_weight="2"
+              android:layout_rowWeight="3"
+              android:textSize="48sp"
+              style="@style/MyFieldsLandscape"/>
 
     <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:columnCount="5"
-            tools:ignore="HardcodedText,UselessParent,RtlHardcoded, RtlSymmetry">
-
-        <TextView android:id="@+id/textField"
-                  android:layout_rowWeight="1"
-                  android:textSize="18sp"
-                  style="@style/MyFieldsLandscape"/>
-
-        <TextView android:id="@+id/textField2"
-                  android:layout_rowWeight="3"
-                  android:textSize="48sp"
-                  style="@style/MyFieldsLandscape"/>
+            android:layout_weight="7">
 
         <TextView android:id="@+id/bSeven"
                   android:text="7"
@@ -97,4 +102,4 @@
                   android:text="+"
                   style="@style/MyColorButtonsLandscape"/>
     </GridLayout>
-</FrameLayout>
+</LinearLayout>

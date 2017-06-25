@@ -1,26 +1,33 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="ua.art.myapppackage.FragCalculator">
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="ua.art.myapppackage.FragCalculator">
+
+    <TextView
+            android:layout_weight="1"
+            android:id="@+id/textField"
+            android:textSize="18sp"
+            style="@style/MyFields"/>
+
+    <TextView
+            android:layout_weight="2"
+            android:id="@+id/textField2"
+            android:textSize="48sp"
+            style="@style/MyFields"/>
 
     <GridLayout
+            android:layout_weight="8"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:columnCount="4"
-            tools:ignore="HardcodedText,UselessParent,RtlHardcoded, RtlSymmetry">
+            tools:ignore="HardcodedText">
 
-        <TextView android:id="@+id/textField"
-                  android:layout_rowWeight="1"
-                  android:textSize="18sp"
-                  style="@style/MyFields"/>
-
-        <TextView android:id="@+id/textField2"
-                  android:layout_rowWeight="3"
-                  android:textSize="48sp"
-                  style="@style/MyFields"/>
 
         <TextView android:id="@+id/bClear"
+
                   android:layout_columnSpan="2"
                   android:text="@string/text_view_clear"
                   style="@style/MyColorButtons"/>
@@ -97,4 +104,4 @@
                   android:text="="
                   style="@style/MyColorButtons"/>
     </GridLayout>
-</FrameLayout>
+</LinearLayout>
