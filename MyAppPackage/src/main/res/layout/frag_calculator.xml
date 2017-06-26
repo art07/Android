@@ -1,107 +1,219 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:padding="1dp"
         tools:context="ua.art.myapppackage.FragCalculator">
 
     <TextView
             android:layout_weight="1"
             android:id="@+id/textField"
-            android:textSize="18sp"
+            android:textSize="30sp"
             style="@style/MyFields"/>
 
     <TextView
             android:layout_weight="2"
             android:id="@+id/textField2"
-            android:textSize="48sp"
+            android:textSize="60sp"
             style="@style/MyFields"/>
 
-    <GridLayout
+    <android.support.v7.widget.GridLayout
             android:layout_weight="8"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:columnCount="4"
+            app:columnCount="4"
             tools:ignore="HardcodedText">
 
+        <TextView
+                android:id="@+id/bClear"
+                app:layout_row="0"
+                app:layout_column="0"
+                app:layout_columnSpan="2"
+                app:layout_rowWeight="1"
+                android:text="@string/text_view_clear"
+                style="@style/MyColorButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bClear"
+        <TextView
+                android:id="@+id/bPercent"
+                app:layout_row="0"
+                app:layout_column="2"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="%"
+                style="@style/MyColorButtons"
+                app:layout_gravity="fill"/>
 
-                  android:layout_columnSpan="2"
-                  android:text="@string/text_view_clear"
-                  style="@style/MyColorButtons"/>
+        <TextView
+                android:id="@+id/bDivide"
+                app:layout_row="0"
+                app:layout_column="3"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="/"
+                style="@style/MyColorButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bPercent"
-                  android:text="%"
-                  style="@style/MyColorButtons"/>
+        <TextView
+                android:id="@+id/bSeven"
+                app:layout_row="1"
+                app:layout_column="0"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="7"
+                style="@style/MyColorlessButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bDivide"
-                  android:text="/"
-                  style="@style/MyColorButtons"/>
+        <TextView
+                android:id="@+id/bEight"
+                app:layout_row="1"
+                app:layout_column="1"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="8"
+                style="@style/MyColorlessButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bSeven"
-                  android:text="7"
-                  style="@style/MyColorlessButtons"/>
+        <TextView
+                android:id="@+id/bNine"
+                app:layout_row="1"
+                app:layout_column="2"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="9"
+                style="@style/MyColorlessButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bEight"
-                  android:text="8"
-                  style="@style/MyColorlessButtons"/>
+        <TextView
+                android:id="@+id/bMultiply"
+                app:layout_row="1"
+                app:layout_column="3"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="x"
+                style="@style/MyColorButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bNine"
-                  android:text="9"
-                  style="@style/MyColorlessButtons"/>
+        <TextView
+                android:id="@+id/bFour"
+                app:layout_row="2"
+                app:layout_column="0"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="4"
+                style="@style/MyColorlessButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bMultiply"
-                  android:text="x"
-                  style="@style/MyColorButtons"/>
+        <TextView
+                android:id="@+id/bFive"
+                app:layout_row="2"
+                app:layout_column="1"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="5"
+                style="@style/MyColorlessButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bFour"
-                  android:text="4"
-                  style="@style/MyColorlessButtons"/>
+        <TextView
+                android:id="@+id/bSix"
+                app:layout_row="2"
+                app:layout_column="2"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="6"
+                style="@style/MyColorlessButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bFive"
-                  android:text="5"
-                  style="@style/MyColorlessButtons"/>
+        <TextView
+                android:id="@+id/bMinus"
+                app:layout_row="2"
+                app:layout_column="3"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="-"
+                style="@style/MyColorButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bSix"
-                  android:text="6"
-                  style="@style/MyColorlessButtons"/>
+        <TextView
+                android:id="@+id/bOne"
+                app:layout_row="3"
+                app:layout_column="0"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="1"
+                style="@style/MyColorlessButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bMinus"
-                  android:text="-"
-                  style="@style/MyColorButtons"/>
+        <TextView
+                android:id="@+id/bTwo"
+                app:layout_row="3"
+                app:layout_column="1"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="2"
+                style="@style/MyColorlessButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bOne"
-                  android:text="1"
-                  style="@style/MyColorlessButtons"/>
+        <TextView
+                android:id="@+id/bThree"
+                app:layout_row="3"
+                app:layout_column="2"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="3"
+                style="@style/MyColorlessButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bTwo"
-                  android:text="2"
-                  style="@style/MyColorlessButtons"/>
+        <TextView
+                android:id="@+id/bPlus"
+                app:layout_row="3"
+                app:layout_column="3"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="+"
+                style="@style/MyColorButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bThree"
-                  android:text="3"
-                  style="@style/MyColorlessButtons"/>
+        <TextView
+                android:id="@+id/bZero"
+                app:layout_row="4"
+                app:layout_column="0"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="0"
+                style="@style/MyColorlessButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bPlus"
-                  android:text="+"
-                  style="@style/MyColorButtons"/>
+        <TextView
+                android:id="@+id/bDoubleZero"
+                app:layout_row="4"
+                app:layout_column="1"
+                app:layout_rowWeight="1"
+                android:text="00"
+                style="@style/MyColorlessButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bZero"
-                  android:text="0"
-                  style="@style/MyColorlessButtons"/>
+        <TextView
+                android:id="@+id/bPoint"
+                app:layout_row="4"
+                app:layout_column="2"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="."
+                style="@style/MyColorlessButtons"
+                app:layout_gravity="fill"/>
 
-        <TextView android:id="@+id/bDoubleZero"
-                  android:text="00"
-                  style="@style/MyColorlessButtons"/>
-
-        <TextView android:id="@+id/bPoint"
-                  android:text="."
-                  style="@style/MyColorlessButtons"/>
-
-        <TextView android:id="@+id/bEqual"
-                  android:text="="
-                  style="@style/MyColorButtons"/>
-    </GridLayout>
+        <TextView
+                android:id="@+id/bEqual"
+                app:layout_row="4"
+                app:layout_column="3"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="="
+                style="@style/MyColorButtons"
+                app:layout_gravity="fill"/>
+    </android.support.v7.widget.GridLayout>
 </LinearLayout>
